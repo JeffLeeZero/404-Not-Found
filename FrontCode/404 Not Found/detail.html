@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>	
+	<link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/detail.css" type="text/css">
+    <link rel="stylesheet" href="css/musicPlayer.css" type="text/css">
+</head>
+<body>
+	<div class="aboutPage" id="detail" v-if="show">
+		<div class="aboutPage" :class="animation[no]" v-for="(item, no) in movies" v-if="no == index||no==prepare">
+	        <img class="backImg" :src="item.movieBackground+'.jpg'">
+	        <div class="black"></div>     <!-- 黑色背景布-->
+	        <img src="img/music.png" onclick="musicController()" class="voice" />
+	        <img src="img/comment.png" class="comment" @click="openComment()"/>
+	        <div class="moveName">{{item.movieName}}</div>
+	        <div class="picture">
+	            <img class="picture1" :src="item.moviePic1+'.jpg'"/>
+	            <img class="picture2" :src="item.moviePic2+'.jpg'"/>
+	            <img class="picture3" :src="item.moviePic3+'.jpg'"/>
+	        </div>
+	        <div class="starLevel">
+	        	<div :id="'level'+no" style="flex:0 1 auto"></div>
+	        </div>
+	        <div class="intro">{{item.movieIntro}}</div>
+	    </div>
+	    <div class="comment-div" :id="commentStyle" v-if="commentOpen">
+	   		<img class="background" src="img/commentBackground.jpg" />
+	   		<div class="comment-content">
+	   			<div class="comment-li" v-for="(item,index) in comments">
+	   				<div class="rank" :id="'rank'+index"></div>
+	   				<div class="userName">{{item.nickname}}</div>
+	   				<div class="user-comment">{{item.movieComment}}</div>
+	   				<div class="commit-time">{{item.submissionTime}}</div>
+	   			</div>
+	   			<div class="page" id="page"></div>
+	   		</div>
+	   		<div class="myrank">你的评分： <div id="myrank"></div></div>
+	   		
+	    	<button class="layui-btn" id="submit-button" @click="sendComment()">发布</button>
+	    	<textarea id="myComment" maxlength="140" v-model="myComment" onfocus="focusing()" placeholder="发表你的看法..."></textarea>
+	    	<img src="img/x.png" class="closeButton" @click="closeComment()" />
+	    </div>
+	    <div><div><div><div id="myrank"></div></div></div></div>
+	    <img src="img/last.png" class="last" @click="lastMovie" v-show="prepare>0&&index>0"/>
+		<img src="img/next.png" class="next" @click="nextMovie" v-show="prepare<5&&index<5"/>
+		
+	</div>
+	<audio loop="loop">
+			<source ></source>
+		</audio>
+		<div class="musicPlayer" id="bgmusic" style="display: none;">
+				<div class="disc"></div>
+				<div class="musicName">歌名</div>
+				<div class="beforeMusic" onclick="beforeMusic()"></div>
+				<div class="pauseMusic" onclick="pause()"></div>
+				<div class="play" onclick="play()"></div>
+				<div class="nextMusic" onclick="nextMusic()"></div>
+				<div class="bar">
+					<div class="box"></div>
+
+				</div>
+				<div class="allVoice">
+					<div class="voiceBar"></div>
+
+				</div>
+			</div>
+    <script src="layui/layui.js"></script>
+    <script src="js/musicPlayer.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>

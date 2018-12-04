@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    height: 100%;
+}
+.p_comment{
+    position: absolute;
+    width: 38%;
+    height: 100%;
+    background-color: #f2eada;
+}
+.p_user{
+    position: absolute;
+    top: 9.8%;
+    width: 100%;
+    height: 5.5%;
+    background-color: #01AAED;
+}
+.p_cMove{
+    position: absolute;
+    top: 21.4%;
+    width: 100%;
+    height: 8%;
+    background-color: #01AAED;
+}
+.p_hr{
+    position: absolute;
+    top: 40%;
+    left: 18.4%;
+    width: 74.8%;
+    border-bottom: 3px solid #c7a252;
+}
+.div_comment{
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    height: 55.5%;
+    overflow-y:auto;
+    border:1px solid;
+}
+/*滑动条样式*/
+.div_comment::-webkit-scrollbar {
+    width: 8px;
+}
+.div_comment::-webkit-scrollbar-track {
+    background-color:#f2eada;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+}
+.div_comment::-webkit-scrollbar-thumb {
+    background-color: rgba(25,155,210,0.5);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius:2em;
+}
+.p_myComment{
+    position: relative;
+    width: 100%;
+    height: 33.3%;
+    float: left;
+}
+.clear{
+    clear: both;
+}
+.comment_content{
+    position: relative;
+    top: 19.3%;
+    left: 10.5%;
+    width: 66.5%;
+    height: 40%;
+    background-color: #9F9F9F;
+    float:left;
+}
+.score{
+    position: relative;
+    top: 19.3%;
+    left: 15%;
+    width: 7.3%;
+    height: 40%;
+    background-color: #9F9F9F;
+    float:left;
+}
+.move_name{
+    clear: left;
+    position: relative;
+    top: 20%;
+    left: 10.5%;
+    width: 66.5%;
+    height: 30%;
+    background-color: #9F9F9F;
+}
+.like{
+    position: absolute;
+    left: 38%;
+    width: 62%;
+    height: 100%;
+    background-color: #c7a252;
+}
+.voice{
+    position: absolute;
+    right: 7%;
+    width: 6%;
+    z-index: 1000;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+.voice:hover{
+    opacity: 1;
+}
+.back{
+    position: absolute;
+    top: 0%;
+    right: 1%;
+    width: 6.5%;
+    transition: all 0.3s linear;
+    opacity: 0.7;
+}
+.back:hover{
+    opacity: 1;
+}
+.myLike{
+    position: absolute;
+    top: 9.2%;
+    left:9.4%;
+    width: 20.7%;
+    height: 7%;
+    background-color: #01AAED;
+}
+.like_move1{
+    position: absolute;
+    top: 22.5%;
+    left:13.1%;
+    width: 17.82%;
+    height: 24.3%;
+    padding: 1px;
+    border:3px solid #f2eada;
+}
+.like_move2{
+    position: absolute;
+    top: 22.5%;
+    left:40%;
+    width: 17.82%;
+    height: 24.3%;
+    padding: 1px;
+    border:3px solid #f2eada;
+}
+.like_move3{
+    position: absolute;
+    top: 22.5%;
+    left: 67.3%;
+    width: 17.82%;
+    height: 24.3%;
+    padding: 1px;
+    border:3px solid #f2eada;
+}
+.like_move4{
+    position: absolute;
+    top: 53%;
+    left:40%;
+    width: 17.82%;
+    height: 24.3%;
+    border:3px solid #f2eada;
+}
+.like_move5{
+    position: absolute;
+    top: 53%;
+    left:13.1%;
+    width: 17.82%;
+    height: 24.3%;
+    padding: 1px;
+    border:3px solid #f2eada;
+}
+.like_move6{
+    position: absolute;
+    top: 53%;
+    left: 67.3%;
+    width: 17.82%;
+    height: 24.3%;
+    padding: 1px;
+    border:3px solid #f2eada;
+}
+.moveImg{
+    width: 85%;
+    height: 85%;
+    margin: 7.5%;
+}
+.nextLike{
+    position: absolute;
+    bottom: 10%;
+    right: 8%;
+    width: 6%;
+    z-index: 1000;
+    opacity: 0.6;
+    background-color: #F8F8F8;
+}

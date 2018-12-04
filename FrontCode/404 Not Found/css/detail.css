@@ -1,0 +1,410 @@
+@font-face {
+    font-family: "OurFont";
+    src: url("../font/HaTian-SuiXing.ttf") format("truetype");
+    font-weight: normal;
+  	font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: OurFont;
+}
+html, body{
+    height: 100%;
+}
+
+.enterFromDown{
+	position: absolute;
+	top: 100%;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	animation: enter-from-down 0.7s linear forwards;
+}
+
+@keyframes enter-from-down{
+	0%{top: 100%;}
+	15%{top: 100%;}
+	100%{top:0%;}
+}
+
+.aboutPage .leaveFromDown{
+	position: absolute;
+	top: 0%;
+	height: 100%;
+	right: 0;
+	width: 100%;
+	animation: leave-from-down 0.7s linear forwards;
+}
+
+@keyframes leave-from-down{
+	0%{top: 0%;}
+	15%{top: 0%;}
+	100%{top: -100%;}
+}
+.enterFromUp{
+	position: absolute;
+	top: -100%;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	animation: enter-from-up 0.7s linear forwards;
+}
+
+@keyframes enter-from-up{
+	0%{top: -100%;}
+	15%{top: -100%;}
+	100%{top:0%;}
+}
+
+.aboutPage .leaveFromUp{
+	position: absolute;
+	top: 0%;
+	height: 100%;
+	right: 0;
+	width: 100%;
+	animation: leave-from-up 0.7s linear forwards;
+}
+
+@keyframes leave-from-up{
+	0%{top: 0%;}
+	15%{top: 0%;}
+	100%{top: 100%;}
+}
+.aboutPage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.backImg{
+    position: absolute;
+    top: -3%;
+    left: -3%;
+    width: 106%;
+    height: 106%;
+    background: url("../img/p3.jpg") no-repeat;
+    -webkit-filter: blur(7px);
+    -moz-filter: blur(7px);
+    -o-filter: blur(7px);
+    -ms-filter: blur(7px);
+    filter: blur(7px);
+    background-size: 100% 100%;
+}
+.black{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.3);
+}
+.voice{
+    position: absolute;
+    right: 7%;
+    width: 4%;
+    z-index: 1000;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+
+.voice:hover{
+	opacity: 1;
+}
+
+.comment{
+    position: absolute;
+    right: 2%;
+    width: 3.8%;
+    z-index: 10;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+
+.comment:hover{
+	opacity: 1;
+}
+.moveName{
+    position: absolute;
+    top:10%;
+    width: 100%;
+    height: 9%;
+    color: #F2EADA;
+    text-align: center;
+    font-size: 7vh;
+    font-weight: bolder;
+    z-index: 10;
+}
+.picture{
+    position: absolute;
+    top: 27%;
+    width: 100%;
+    height: 37.5%;
+    z-index: 9;
+}
+.picture1{
+    position: absolute;
+    width: 33.3%;
+    height: 100%;
+    background: url("../img/p1.jpg") no-repeat;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+.picture2 {
+    position: absolute;
+    left: 33.3%;
+    width: 33.3%;
+    height: 100%;
+    background: url("../img/p2.jpg") no-repeat;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+.picture3 {
+    position: absolute;
+    left: 66.6%;
+    width: 33.4%;
+    height: 100%;
+    background: url("../img/p4.jpg") no-repeat;
+    background-size: 100% 100%;
+    z-index: 10;
+}
+.starLevel{
+    position: absolute;
+    top: 67%;
+    width: 100%;
+    height: 4%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+#level{
+	flex: 0 1 auto;
+	height: 100%;
+}
+.intro{
+    position: absolute;
+    top:72%;
+    width: 50%;
+    left: 25%;
+    height: 21%;
+    font-size: 2.5vh;
+    z-index: 10;
+    color: #F2EADA;
+}
+.next{
+    position: absolute;
+    top: 89%;
+    left: 48%;
+    width: 4%;
+    z-index: 10;
+    transition: all 0.2s linear;
+    opacity: 0.6;
+}
+
+.last{
+	position: absolute;
+    top: 2%;
+    left: 48%;
+    width: 4%;
+    z-index: 10;
+    transition: all 0.2s linear;
+    opacity: 0.6;
+}
+.last:hover{
+	opacity: 1;
+}
+
+.next:hover{
+	opacity: 1;
+}
+
+.comment-div{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	z-index: 30;
+}
+
+#comment-enter{
+	animation: enterFromLeft 0.3s linear;
+}
+
+@keyframes enterFromLeft{
+	from{right: -50%;}
+	to{right: 0%;}
+}
+
+#comment-leave{
+	animation: leaveToLeft 0.3s linear forwards;
+}
+
+@keyframes leaveToLeft{
+	from{right: 0%;}
+	to{right: -50%;}
+}
+
+.comment-content{
+	position: absolute;
+	width: 50%;
+	height: 60%;
+	top: 10%;
+	right: 0;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	
+}
+.comment-content::-webkit-scrollbar{
+	display: none;
+}
+.comment-div .background{
+	position: absolute;
+	width: 50%;
+	height: 80%;
+	top: 10%;
+	right: 0;
+}
+
+.comment-li{
+	flex: 0 0 auto;
+	position: relative;
+	width: 75%;
+	margin: 0 15% 0 10%;
+	min-height: 25%;
+	height: auto;
+	border-bottom:solid rgb(144,144,144) 2px;
+	overflow-wrap: break-word;
+	display: inline-flex;
+}
+
+.userName{
+	position: absolute;
+	left: 0;
+	top: 3.2vh;
+	font-size: 3vh;
+	color: #FFFFFF;
+	height: 3vh;
+	width: 50%;
+}
+
+.rank{
+	position: absolute;
+	left: 35%;
+	top: 3.5vh;
+	height: 3vh;
+	width: 50%;
+}
+.page{
+	flex: 0 0 auto;
+	margin-left: 15%;
+	font-size: 1vh;
+}
+
+.user-comment{
+	margin-top: 9vh;
+	width: 100%;
+	font-size: 2.5vh;
+	color: #FFFFFF;
+}
+
+.commit-time{
+	position: absolute;
+	top: 3.2vh;
+	right: 0;
+	font-size: 3vh;
+	color: #FFFFFF;
+	height: 3vh;
+}
+
+.myrank{
+	position: absolute;
+	width: 30%;
+	height: 4%;
+	top: 71%;
+	left: 55%;
+	font-size: 2.5vh;
+	color: #FFFFFF;
+}
+
+
+#myrank{
+	position: absolute;
+	top:-20%;
+	left: 20%;
+	width: 100%;
+	height: 300%;
+}
+
+#myComment{
+	position: absolute;
+	width: 37.5%;
+	left: 55%;
+	top: 75%;
+	height: 12%;
+	font-size: 2.5vh;
+	color: #FFFFFF;
+	background-color: rgba(161,163,165,0.3);
+	resize:none;
+}
+
+textarea::-webkit-input-placeholder{
+	color:rgba(255,255,255,0.7);
+}
+
+#myComment.text-focusing{
+	width: 37.5%;
+	animation: text-focusing 0.3s linear forwards;
+}
+
+@keyframes text-focusing{
+	from{width: 37.5%;}
+	to{width:30%}
+}
+
+#myComment.text-leaving{
+	width: 30%;
+	animation: text-leaving 0.3s linear forwards;
+}
+
+@keyframes text-leaving{
+	from{width: 30%;}
+	to{width:37.5%}
+}
+
+#submit-button{
+	position: absolute;
+	left: 86%;
+	top: 76%;
+	height: 10%;
+	width: 6%;
+	background-color: rgba(100,100,100,0.8);
+	font-size: 3vh;
+	display: none;
+}
+
+.buttonShow{
+	opacity: 1;
+	animation: button-show 0.3s linear;
+}
+
+@keyframes button-show{
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+
+.closeButton{
+	position: absolute;
+	right: 1%;
+	height: 8%;
+	top: 46%;
+}
+
+.closeButton:hover{
+	height: 10%;
+	top: 45%;
+	right: 0.5%;
+}

@@ -1,0 +1,224 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+.container {
+	
+	display: flex;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.voice{
+    position: absolute;
+    top: 0;
+    right: 2%;
+    width: 4%;
+    z-index: 10;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+
+.voice:hover{
+	opacity: 1;
+}
+
+.carousel-index {
+	position: absolute;
+	top: 2%;
+	left: 2%;
+	width: 96%;
+	height: 96%;
+}
+
+.vague {
+	-webkit-filter: blur(7px);
+	-moz-filter: blur(7px);
+	-o-filter: blur(7px);
+	-ms-filter: blur(7px);
+	filter: blur(7px);
+}
+
+
+
+.logo-index {
+	position: absolute;
+	top: 25vh;
+	width: 37vh;
+	margin: 0 auto;
+}
+
+.logo-login{
+	position: absolute;
+	margin: 0 auto;
+	animation: logo-loginning 1s linear forwards;
+}
+@keyframes logo-loginning{
+	0%{top: 25vh;width: 37vh;opacity: 1;}
+	50%{opacity: 1;}
+	100%{top: 19vh;width: 30vh;opacity: 1;}
+}
+
+
+.start-button {
+	position: absolute;
+	bottom: 30vh;
+	width: 20vh;
+	transition: all .5s;
+}
+
+.start-button:hover {
+	width: 25vh;
+}
+
+.open-menu{
+	position: absolute;
+	left: 0;
+	height: 13vh;
+	width: 13vh;
+	top: 44vh;
+}
+
+.open-menu:hover{
+	animation: lengthen 0.3s;
+}
+
+@keyframes lengthen{
+	0%{height: 13vh;top: 44vh;width: 13vh;}
+	80%{height: 13vh;top: 44vh;width: 13vh;}
+	100%{height: 13vh;top: 44vh;width: 13vh;}
+}
+.menu-index{
+	position: absolute;
+	width: 60%;
+	height: 85%;
+	top: 10%;
+	left: -60%;
+	background-color: rgba(242,234,218,0.8);
+	
+}
+
+.left-enter{
+	animation: left-enter 0.5s forwards;
+}
+
+.right-leave{
+	animation: right-leave 0.5s forwards;
+}
+
+/*动画：从左向右划入*/
+@keyframes left-enter{
+	from{left: -60%;}
+	to{left: 0;}
+}
+
+@keyframes right-leave{
+	from{left: 0;}
+	to{left: -60%;}
+}
+
+.close-button{
+	position: absolute;
+	width: 10%;
+	left: 0;
+	top: 40%;
+}
+
+.close-button:hover{
+	left: 0;
+	animation: close-rotation 0.3s linear forwards;	
+}
+
+@keyframes close-rotation{
+	from{transform: rotate(0););}
+	to{transform: rotate(180deg);}
+}
+
+.login-div{
+	flex: 0 1 auto;
+	position: relative;
+	height: 51.4vh;
+	width: 51.4vh;
+	animation: fadeOut 1s linear forwards;
+}
+
+@keyframes fadeOut{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+
+.login-div .empty{
+	margin-top: -18%;
+	width: 60%;
+	margin-left: 20%;
+	margin-bottom: 5%;
+	height: 60%;
+}
+
+.login-div input{
+	width: 90%;
+	height: 12%;
+	padding-left: 10%;
+	font-size: 2vh;
+}
+
+
+.login-div span{
+	color: red;
+	height: 12%;
+	left: 103%;
+	width: 100%;
+	font-size: 2vh;
+}
+
+.login-div button{
+	width: 101%;
+	height: 12%;
+	color: #FFFFFF;
+	font-size: 2.4vh;
+	margin: 0;
+}
+
+.login-button{
+	position: absolute;
+	bottom: 13.2%;
+	background-color: #826858;
+	left: 0;
+}
+
+.register-button{
+	position: absolute;
+	margin: 0;
+	left: 0;
+	bottom: 0;
+}
+
+.loginWithPhone{
+	position: absolute;
+	top: 102%;
+	right: 0;
+	color: rgb(200,200,200);
+	font-size: 1.7vh;
+}
+
+a:hover{
+	color: rgba(180,180,180);
+	cursor: pointer;
+}
+
+.register-button.layui-btn-disabled{
+	background-color: rgba(200,200,200,0.8);
+}

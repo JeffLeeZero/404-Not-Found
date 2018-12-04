@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<link rel="stylesheet" href="css/recommend.css" type="text/css">
+		<link rel="stylesheet" href="css/musicPlayer.css" type="text/css">
+	</head>
+
+	<body>
+		<div class="firstPage">
+			<img src="img/music.png" onclick="musicController()" class="voice" />
+			<img src="img/喜欢按钮1.png" class="likeButton">
+			<div class="stars">
+				<div id="star1">
+					<img ondragstart='return false;' class="starImg" src="img/白羊.png" onclick="change('Aries')">
+				</div>
+				<div id="star2">
+					<img ondragstart='return false;' class="starImg" src="img/金牛.png" onclick="change('Taurus')">
+				</div>
+				<div id="star3">
+					<img ondragstart='return false;' class="starImg" src="img/双子.png" onclick="change('Gemini')">
+				</div>
+				<div id="star4">
+					<img ondragstart='return false;' class="starImg" src="img/巨蟹.png" onclick="change('Cancer')">
+				</div>
+				<div id="star5">
+					<img ondragstart='return false;' class="starImg" src="img/狮子.png" onclick="change('Leo')">
+				</div>
+				<div id="star6">
+					<img ondragstart='return false;' class="starImg" src="img/处女.png" onclick="change('Virgo')">
+				</div>
+				<div id="star7">
+					<img ondragstart='return false;' class="starImg" src="img/天秤.png" onclick="change('Libra')">
+				</div>
+				<div id="star8">
+					<img ondragstart='return false;' class="starImg" src="img/天蝎.png" onclick="change('Scorpio')">
+				</div>
+				<div id="star9">
+					<img ondragstart='return false;' class="starImg" src="img/射手.png" onclick="change('Sagittarius')">
+				</div>
+				<div id="star10">
+					<img ondragstart='return false;' class="starImg" src="img/摩羯.png" onclick="change('Capricorn')">
+				</div>
+				<div id="star11">
+					<img ondragstart='return false;' class="starImg" src="img/水瓶.png" onclick="change('Aquarius')">
+				</div>
+				<div id="star12">
+					<img ondragstart='return false;' class="starImg" src="img/双鱼.png" onclick="change('Pisces')">
+				</div>
+			</div>
+
+		</div>
+		<div class="starPage" id="recommend" v-if="chosen">
+			<img class="background" :src="movies[index].movieBackground+'.jpg'" />
+			<img src="img/music.png" onclick="musicController()" class="voice" />
+			<img class="back" src="img/star.png" onclick="back()">
+
+			<div class="starName">
+				{{constellation}}
+			</div>
+			<div class="introduce">
+				<span class="slogan">{{ movies[index].movieSlogan }}</span>
+				<!--<span class="span_intro">的bablablalballballblalblalblalblalblalbalbl随便打的打发的发的发的 地地道道地地道道点点滴滴的点点滴滴
+        的点点滴滴多多多多多多多多多多多多多多多多多DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD得得得得得得得多多多的点点滴滴多多多多多多多多多多多多多多多多多多多多多多多多
+            dddddddddddddddddddddddd多多多多多多多多多多多DD多多多多多多多DD多多多多DD多多llballblalblalblalblalblalbalbl随便打的打发的发的发的 地地道道地地道道点点滴滴的点点滴滴D</span>-->
+				<!--<div class="love">喜欢</div>-->
+			</div>
+			
+			<div class="movie_div">
+				<div class="movie" id="m1" @mouseenter="movieChoose(0)" @mouseleave="movieChoose(6)" @click="enterDetail(0)">
+					<img ondragstart='return false;' :src="movies[0].moviePoster+'.jpg'" />
+					<div class="move_intro_1">
+						<div class="movie_title">{{movies[0].movieName}}</div>
+						<span class="movie_score">{{movies[0].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=0&&touched"></div>
+				</div>
+				<div class="movie" id="m2" @mouseenter="movieChoose(1)" @mouseleave="movieChoose(6)" @click="enterDetail(1)">
+					<img ondragstart='return false;' :src="movies[1].moviePoster+'.jpg'" />
+					<div class="move_intro_2">
+						<div class="movie_title">{{movies[1].movieName}}</div>
+						<span class="movie_score">{{movies[1].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=1&&touched"></div>
+				</div>
+				<div class="movie" id="m3" @mouseenter="movieChoose(2)" @mouseleave="movieChoose(6)" @click="enterDetail(2)">
+					<img ondragstart='return false;' :src="movies[2].moviePoster+'.jpg'" />
+					<div class="move_intro_1">
+						<div class="movie_title">{{movies[2].movieName}}</div>
+						<span class="movie_score">{{movies[2].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=2&&touched"></div>
+				</div>
+				<div class="movie" id="m4" @mouseenter="movieChoose(3)" @mouseleave="movieChoose(6)" @click="enterDetail(3)">
+					<img ondragstart='return false;' :src="movies[3].moviePoster+'.jpg'" />
+					<div class="move_intro_2">
+						<div class="movie_title">{{movies[3].movieName}}</div>
+						<span class="movie_score">{{movies[3].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=3&&touched"></div>
+				</div>
+				<div class="movie" id="m5" @mouseenter="movieChoose(4)" @mouseleave="movieChoose(6)" @click="enterDetail(4)">
+					<img ondragstart='return false;' :src="movies[4].moviePoster+'.jpg'" />
+					<div class="move_intro_1">
+						<div class="movie_title">{{movies[4].movieName}}</div>
+						<span class="movie_score">{{movies[4].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=4&&touched"></div>
+				</div>
+				<div class="movie" id="m6" @mouseenter="movieChoose(5)" @mouseleave="movieChoose(6)" @click="enterDetail(5)">
+					<img ondragstart='return false;' :src="movies[5].moviePoster+'.jpg'" />
+					<div class="move_intro_2">
+						<div class="movie_title">{{movies[5].movieName}}</div>
+						<span class="movie_score">{{movies[5].movieScore}}</span>
+					</div>
+					<div class="dark" v-if="index!=5&&touched"></div>
+				</div>
+			</div>
+
+		</div>
+		<audio autoplay="autoplay" loop="loop">
+			<source ></source>
+		</audio>
+		<div class="musicPlayer" id="bgmusic">
+			<div class="disc"></div>
+			<div class="musicName">歌名</div>
+			<div class="beforeMusic" onclick="beforeMusic()"></div>
+			<div class="pauseMusic" onclick="pause()"></div>
+			<div class="play" onclick="play()"></div>
+			<div class="nextMusic" onclick="nextMusic()"></div>
+			<div class="bar">
+				<div class="box"></div>
+
+			</div>
+			<div class="allVoice">
+				<div class="voiceBar"></div>
+
+			</div>
+		</div>
+		<script src="js/recommend.js" type="text/javascript"></script>
+		<script src="js/musicPlayer.js"></script>
+	</body>
+
+</html>

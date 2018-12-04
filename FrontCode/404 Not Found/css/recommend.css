@@ -1,0 +1,670 @@
+@font-face {
+    font-family: "OurFont";
+    src: url("../font/HaTian-SuiXing.ttf") format("truetype");
+    font-weight: normal;
+  	font-style: normal;
+}
+
+@font-face {
+	font-family:"Slogan";
+	src: url("../font/方正吕建德字体简体.ttf") format("truetype");
+    font-weight: normal;
+  	font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: OurFont;
+}
+html,body{
+    height: 100%;
+}
+
+/* 第一个界面 */
+.firstPage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url(../img/starBackground.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+.voice{
+    position: absolute;
+    right: 8%;
+    top: 1%;
+    width: 4%;
+    z-index: 10;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+.likeButton{
+    position: absolute;
+    right: 8%;
+    top: 2%;
+    width: 4%;
+    z-index: 10;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+.likeButton:hover{
+    opacity: 1;
+}
+.firstPage .voice{
+	position: absolute;
+	top: 0%;
+    right: 2%;
+    width: 5%;
+    transition: all 0.3s linear;
+    opacity: 0.7;
+}
+
+.voice:hover{
+	opacity: 1;
+}
+.stars{
+    position: absolute;
+    left: 15%;
+    width: 70%;
+    height: 100%;
+}
+
+/* 各个星座界面*/
+.starPage{
+    position: absolute;
+    width: 100%;;
+    height: 100%;
+}
+
+.starPage .background{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;	
+}
+
+.back{
+    position: absolute;
+    top: 0%;
+    right: 2%;
+    width: 5%;
+    transition: all 0.3s linear;
+    opacity: 0.7;
+}
+
+
+
+.back:hover{
+	opacity: 1;
+}
+
+.movie_div{
+    position: absolute;
+    left: 17.7%;
+    top: 45%;
+    width: 62.9%;/*1207.68px*/
+    height: 47.2%;/*440.848px*/
+    /*background-color: #01AAED;*/
+}
+.starName{
+    position: absolute;
+    text-align: center;
+    top: 12.5%;
+    left: 0;
+    height: 4.7%;
+    width: 100%;
+    font-size: 4em;
+    font-family: "bradley hand itc";
+    font-weight: bolder;
+    color: #c7a252;
+}
+
+.introduce{
+    position: absolute;
+    top: 23%;
+    left: 18.55%;
+    height: 23.2%;
+    width: 62.9%;
+}
+.slogan{
+    position: absolute;
+    right: 0%;
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+    font-size: 30px;
+    color: #f2eada;
+    text-align: center;
+    font-family: Slogan;
+   word-wrap: break-word;
+}
+.span_intro{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: 40%;
+    text-indent: 4%;
+    font-weight: bold;
+    font-size: large;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+.love{
+    position: absolute;
+    top: 80%;
+    right: 0%;
+    width: 5%;
+    height: 20%;
+    background-color: #01AAED;
+}
+
+.movie{
+	position: absolute;
+	width: 14%;
+    height: 66.5%;/* 55.3%;*/
+    z-index: 1;
+    transition: all 0.2s linear; 
+}
+
+.dark{
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	animation: dark linear 0.3s;
+}
+
+@keyframes dark{
+	0%{opacity: 0;}
+	33%{opacity: 0;}
+	100%{opacity: 1;}
+}
+#m1{
+    left: 2.4%;
+    top: 12.4%;
+}
+#m2{
+    left: 18.7%;
+    top: 40%;
+}
+#m3{
+    left: 34.92%;
+    top: 17.84%;
+}
+#m4{
+    left: 51.3%;
+    top: 29.8%;
+	
+}
+#m5{
+    left: 67.58%;
+    top: 2.2%;
+}
+#m6{
+    left: 83.5%;
+    top: 23.7%;
+}
+
+.movie:hover{
+	width: 16%;
+    height: 76%;/* 55.3%;*/
+   	transform: translateX(-6%) translateY(-6%);
+}
+
+.movie:hover .movie_title{
+	font-size: 1.1vw;
+}
+.movie img{
+	position: absolute;	
+	top: 0;
+	width: 100%;
+	left: 0;
+	height: 81.57%;
+}
+
+.move_intro_1{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 18.43%;
+    background:rgba(242,234,218, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.move_intro_2{
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    height:18.43%;
+    background:rgba(199,162,82, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie_title{
+	flex: 0 1 auto;
+	width: 60.5%;
+	margin-left: 6%;
+	font-size: 0.9vw;
+	color: #3e4145;
+	transition: all 0.3s;
+	font-family: "微软雅黑";
+}
+
+.movie_score{
+	flex: 0 1 auto;
+	text-align: right;
+	margin-right: 6%;
+	font-size: 1.3vw;
+}
+
+.move_intro_1 .movie_score{
+	color: #826858;
+}
+
+.move_intro_2 .movie_score{
+	color: #f2eada;
+}
+
+/*星座及其动画效果*/
+#star1{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9999;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star2{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9998;
+    left:45%;
+    top:40%;
+    
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action2 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star3{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9997;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action3 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star4{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9996;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action4 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star5{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9995;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action5 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star6{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9994;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action6 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star7{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9993;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action7 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star8{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9992;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action8 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star9{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9991;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action9 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star10{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9990;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action10 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star11{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9989;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action11 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+#star12{
+    width: 10%;
+    height: 14%;
+    position: absolute;
+    z-index: 9988;
+    left:45%;
+    top:40%;
+
+    animation: action 2s  linear;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+    -moz-animation:action 2s  linear ;
+    -moz-animation-delay: 0.5s;
+    -moz-animation-fill-mode: forwards;
+    -o-animation:action 2s  linear;
+    -o-animation-delay: 0.5s;
+    -o-animation-fill-mode: forwards;
+    -webkit-animation: action12 2s  linear;
+    -webkit-animation-delay: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+}
+@keyframes action {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translate(210px,210px) rotate(-360deg);
+    }
+
+}
+@keyframes action2 {
+
+    from {
+        transform: rotate(0deg) translate(0%,0%) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(390deg) translate(210px,210px) rotate(-390deg);
+    }
+
+}
+@keyframes action3 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(420deg) translate(210px,210px) rotate(-420deg);
+    }
+
+}
+@keyframes action4 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(450deg) translate(210px,210px) rotate(-450deg);
+    }
+
+}
+@keyframes action5 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(480deg) translate(210px,210px) rotate(-480deg);
+    }
+
+}
+@keyframes action6 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(510deg) translate(210px,210px) rotate(-510deg);
+    }
+
+}
+@keyframes action7 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(540deg) translate(210px,210px) rotate(-540deg);
+    }
+
+}
+@keyframes action8 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(570deg) translate(210px,210px) rotate(-570deg);
+    }
+
+}
+@keyframes action9 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(600deg) translate(210px,210px) rotate(-600deg);
+    }
+
+}
+@keyframes action10 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(630deg) translate(210px,210px) rotate(-630deg);
+    }
+
+}
+@keyframes action11 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(660deg) translate(210px,210px) rotate(-660deg);
+    }
+
+}
+@keyframes action12 {
+
+    from {
+        transform: rotate(0deg) translate(0px,0px) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(690deg) translate(210px,210px) rotate(-690deg);
+    }
+
+}
+.starImg{
+    position: absolute;
+    width: 110%;
+    height: 130%;
+}
+.stars img:hover{
+    transform: scale(1.3,1.3);
+}
