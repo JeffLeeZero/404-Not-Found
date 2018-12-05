@@ -25,8 +25,6 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setHeader("Access-Control-Allow-Origin", "*");
-        response.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setCharacterEncoding("utf-8");
 
         PrintWriter out = response.getWriter();
@@ -45,8 +43,8 @@ public class LoginServlet extends HttpServlet {
         try{
             LoginDao ld = new LoginDao();
             ResponseBean<LoginBean> loginResponse = new ResponseBean <>();
-            int accountId = ld.getAccountId(account.getNickname());
-            loginResponse.setReqId(String.valueOf(accountId));
+            String accountId = ld.getAccountId(account.getNickname());
+            loginResponse.setReqId(accountId);
             loginResponse.setResData(account);
             String message = null;
             boolean isSuccess;

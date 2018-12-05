@@ -3,10 +3,7 @@ package com.bean;
 public class LoginBean {
     private String nickname = null;
     private String password = null;
-
-    public LoginBean(){
-
-    }
+    private String telNum = null;
 
     public String getNickname() {
         return nickname;
@@ -22,6 +19,14 @@ public class LoginBean {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTelNum() {
+        return telNum;
+    }
+
+    public void setTelNum(String telNum) {
+        this.telNum = telNum;
     }
 }
 

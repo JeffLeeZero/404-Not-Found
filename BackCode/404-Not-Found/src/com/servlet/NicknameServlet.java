@@ -1,10 +1,9 @@
 package com.servlet;
 
-import com.bean.DetailBean;
-import com.bean.MovieReqBean;
+import com.bean.LoginBean;
 import com.bean.RequestBean;
 import com.bean.ResponseBean;
-import com.dao.DetailDao;
+import com.dao.SignUpDao;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -18,8 +17,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 
-@WebServlet(name = "DetailServlet")
-public class DetailServlet extends HttpServlet {
+@WebServlet(name = "NicknameServlet")
+public class NicknameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -35,36 +34,33 @@ public class DetailServlet extends HttpServlet {
 
         //处理传入对象
         Gson gson = new Gson();
-        Type requestType = new TypeToken<RequestBean<MovieReqBean>>(){}.getType();
-        RequestBean<MovieReqBean> detailRequest = gson.fromJson(str,requestType);
+        Type requestType = new TypeToken<RequestBean<LoginBean>>(){}.getType();
+        RequestBean<LoginBean> loginRequest = gson.fromJson(str,requestType);
+        LoginBean account = loginRequest.getReqParam();
 
-        MovieReqBean reqParam = detailRequest.getReqParam();
-        ResponseBean<DetailBean> detailResponse = new ResponseBean <>();
-        detailResponse.setReqId(detailRequest.getReqId());
-
-        //判断
         try{
-            DetailDao dd = new DetailDao();
-            DetailBean detail = dd.detailQuery(detailRequest.getReqId(),reqParam.getMovieId());
-            String message = new String();
-            boolean isSuccess;
-            if(detail != null){
-                message = "详情获取成功";
-                isSuccess = true;
+            SignUpDao sud = new SignUpDao();
+            ResponseBean<LoginBean> loginResponse = new ResponseBean <>();
+            String accountId = sud.signUp(account.getNickname(),null,account.getTelNum());
+            loginResponse.setReqId(accountId);
+            loginResponse.setResData(null);
+            String message = null;
+            boolean isSuccess = true;
+            if(isSuccess == true){
+                message = "用户名设置成功";
             }
             else{
-                message = "详情为空";
-                isSuccess = false;
+                message = "用户名与密码不匹配";
             }
-            detailResponse.setResData(detail);
-            detailResponse.setMessage(message);
-            detailResponse.setSuccess(isSuccess);
-            String outputString = gson.toJson(detailResponse);
+            loginResponse.setMessage(message);
+            loginResponse.setSuccess(isSuccess);
+            String outputString = gson.toJson(loginResponse);
             out.print(outputString);
         }catch(Exception e){
             out.print(e.toString());
         }
         out.flush();
         out.close();
+
     }
 }

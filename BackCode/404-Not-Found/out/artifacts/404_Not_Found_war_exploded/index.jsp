@@ -43,9 +43,9 @@
       function ajaxFun() {
           $.ajax({
               type: "POST",
-              url:"SmsLoginServlet",
+              url:"PersonalPageServlet",
               dataType: "json",
-              data: JSON.stringify(SmsLoginData()),
+              data: JSON.stringify(PersonalPageData()),
               success: function (res) {
                   console.log("success" + res);
               },
@@ -56,12 +56,42 @@
           })
       }
 
+      function PersonalPageData() {
+          var json = {
+              "reqId": "11",
+              "reqParam": {
+              }
+          };
+          return json;
+      }
+
+      function FavouriteData() {
+          var json = {
+              "reqId": "11",
+              "reqParam": {
+                  "movieId": "1",
+                  "isFavourite": false,
+              }
+          };
+          return json;
+      }
+
       function SmsLoginData() {
           var json = {
-              "reqId": "13247179967",
+              "reqId": "",
               "reqParam": {
-                  "nickname": "1",
-                  "password": "10",
+                  "telNum": "13247179966",
+              }
+          };
+          return json;
+      }
+
+      function NicknameData() {
+          var json = {
+              "reqId": "",
+              "reqParam": {
+                  "nickname": "hhh",
+                  "telNum": "13247179966",
               }
           };
           return json;

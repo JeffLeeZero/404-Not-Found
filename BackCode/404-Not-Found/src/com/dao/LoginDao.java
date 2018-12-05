@@ -29,8 +29,29 @@ public class LoginDao {
         return false;
     }
 
+    //获得昵称
+    public String getNickname(String telNum) throws SQLException {
+        String sql = "SELECT * FROM account WHERE tel_num = ?";
+        Connection conn = DBUtil.getConnection();
+        conn.setAutoCommit(false);
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, telNum);
+        preparedStatement.execute();
+        //执行查询语句并返回结果集
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if (resultSet.next()) {
+            String nickname = resultSet.getString("account_nickname");
+            conn.commit();
+            conn.close();
+            return nickname;
+        }
+        conn.commit();
+        conn.close();
+        return null;
+    }
+
     //获得id
-    public int getAccountId(String nickname) throws SQLException {
+    public String getAccountId(String nickname) throws SQLException {
         String sql = "SELECT * FROM account WHERE account_nickname = ?";
         Connection conn = DBUtil.getConnection();
         conn.setAutoCommit(false);
@@ -40,13 +61,13 @@ public class LoginDao {
         //执行查询语句并返回结果集
         ResultSet resultSet = preparedStatement.executeQuery();
         if (resultSet.next()) {
-            int accountId = resultSet.getInt("account_id");
+            String accountId = resultSet.getString("account_id");
             conn.commit();
             conn.close();
             return accountId;
         }
         conn.commit();
         conn.close();
-        return 0;
+        return null;
     }
 }
