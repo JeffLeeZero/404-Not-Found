@@ -46,9 +46,9 @@ public class SignUpServlet extends HttpServlet {
         boolean isSuccess = false;
 
         try{
-            int accountId = sud.signUp(account.getNickname(),account.getPassword());
-            loginResponse.setReqId(String.valueOf(accountId));
-            if(accountId != 0){
+            String accountId = sud.signUp(account.getNickname(),account.getPassword(),null);
+            loginResponse.setReqId(accountId);
+            if(accountId != null){
                 message = "注册成功";
                 isSuccess = true;
             }

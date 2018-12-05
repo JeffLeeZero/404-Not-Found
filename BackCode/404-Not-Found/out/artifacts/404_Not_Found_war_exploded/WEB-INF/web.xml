@@ -32,6 +32,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>NicknameServlet</servlet-name>
+        <servlet-class>com.servlet.NicknameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NicknameServlet</servlet-name>
+        <url-pattern>/NicknameServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>GetCommentServlet</servlet-name>
         <servlet-class>com.servlet.GetCommentServlet</servlet-class>
     </servlet>

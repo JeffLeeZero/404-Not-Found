@@ -2,22 +2,23 @@ package com.servlet;
 
 import com.bean.LoginBean;
 import com.bean.RequestBean;
-import com.github.qcloudsms.SmsMultiSender;
-import com.github.qcloudsms.SmsMultiSenderResult;
+import com.bean.ResponseBean;
+import com.bean.VerificationCode;
+import com.dao.LoginDao;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import org.json.JSONException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.http.HTTPException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
+import java.util.Random;
 
 @WebServlet(name = "SmsLoginServlet")
 public class SmsLoginServlet extends HttpServlet {
@@ -40,6 +41,10 @@ public class SmsLoginServlet extends HttpServlet {
         RequestBean<LoginBean> loginRequest = gson.fromJson(str,requestType);
         LoginBean account = loginRequest.getReqParam();
 
+        //生成验证码
+        Random random = new Random();
+        String verificationCode = String.valueOf(random.nextInt(9000)+1000);
+
         // 短信应用SDK AppID
         int appid = 1400167297; // 1400开头
 
@@ -47,7 +52,7 @@ public class SmsLoginServlet extends HttpServlet {
         String appkey = "49be6b5a0075d6fcf2154b36ccfb45f1";
 
         // 需要发送短信的手机号码
-        String[] phoneNumbers = {loginRequest.getReqId()};
+        String[] phoneNumbers = {account.getTelNum()};
 
         // 短信模板ID，需要在短信应用中申请
         // NOTE: 这里的模板ID`7839`只是一个示例，
@@ -61,23 +66,48 @@ public class SmsLoginServlet extends HttpServlet {
         String smsSign = "观者心剧中人";
 
         // 指定模板ID单发短信
-        try {
-            String[] params = {"233333","1"};
+
+        try{
+            /*String[] params = {verificationCode,"1"};
             SmsMultiSender msender = new SmsMultiSender(appid, appkey);
             SmsMultiSenderResult result =  msender.sendWithParam("86", phoneNumbers,
                     templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
-            System.out.print(result);
-        } catch (HTTPException e) {
-            // HTTP响应码错误
-            e.printStackTrace();
-        } catch (JSONException e) {
-            // json解析错误
-            e.printStackTrace();
-        } catch (IOException e) {
-            // 网络IO错误
-            e.printStackTrace();
-        } catch (com.github.qcloudsms.httpclient.HTTPException e) {
-            e.printStackTrace();
+            System.out.print(result);*/
+
+            LoginDao ld = new LoginDao();
+            ResponseBean<VerificationCode> loginResponse = new ResponseBean <>();
+            String message = ld.getNickname(account.getTelNum());
+            String accountId;
+            VerificationCode resData = new VerificationCode();
+            if(message == null){
+                accountId = null;
+            }
+            else{
+                accountId = ld.getAccountId(message);
+            }
+            loginResponse.setReqId(accountId);
+            resData.setVerificationCode(verificationCode);
+            loginResponse.setResData(resData);
+
+            boolean isSuccess = false;
+            /*if(result.result == 0){
+                isSuccess = true;
+            }
+            else{
+                isSuccess = false;
+            }*/
+
+            loginResponse.setMessage(message);
+            loginResponse.setSuccess(isSuccess);
+            GsonBuilder gsonbuilder = new GsonBuilder();
+            gsonbuilder.serializeNulls();
+            Gson gsonOutput = gsonbuilder.create();
+            String outputString = gsonOutput.toJson(loginResponse);
+            out.print(outputString);
+        }catch(Exception e){
+            out.print(e.toString());
         }
+        out.flush();
+        out.close();
     }
 }

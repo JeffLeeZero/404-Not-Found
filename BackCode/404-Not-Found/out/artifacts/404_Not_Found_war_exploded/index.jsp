@@ -43,9 +43,9 @@
       function ajaxFun() {
           $.ajax({
               type: "POST",
-              url:"SmsLoginServlet",
+              url:"NicknameServlet",
               dataType: "json",
-              data: JSON.stringify(SmsLoginData()),
+              data: JSON.stringify(NicknameData()),
               success: function (res) {
                   console.log("success" + res);
               },
@@ -58,10 +58,20 @@
 
       function SmsLoginData() {
           var json = {
-              "reqId": "13247179967",
+              "reqId": "",
               "reqParam": {
-                  "nickname": "1",
-                  "password": "10",
+                  "telNum": "13247179966",
+              }
+          };
+          return json;
+      }
+
+      function NicknameData() {
+          var json = {
+              "reqId": "",
+              "reqParam": {
+                  "nickname": "hhh",
+                  "telNum": "13247179966",
               }
           };
           return json;

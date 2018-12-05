@@ -3,7 +3,7 @@ package com.servlet;
 import com.bean.LoginBean;
 import com.bean.RequestBean;
 import com.bean.ResponseBean;
-import com.dao.LoginDao;
+import com.dao.SignUpDao;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,8 +17,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 
-@WebServlet(name = "LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet(name = "NicknameServlet")
+public class NicknameServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -38,19 +38,16 @@ public class LoginServlet extends HttpServlet {
         RequestBean<LoginBean> loginRequest = gson.fromJson(str,requestType);
         LoginBean account = loginRequest.getReqParam();
 
-        //判断
-
         try{
-            LoginDao ld = new LoginDao();
+            SignUpDao sud = new SignUpDao();
             ResponseBean<LoginBean> loginResponse = new ResponseBean <>();
-            String accountId = ld.getAccountId(account.getNickname());
+            String accountId = sud.signUp(account.getNickname(),null,account.getTelNum());
             loginResponse.setReqId(accountId);
-            loginResponse.setResData(account);
+            loginResponse.setResData(null);
             String message = null;
-            boolean isSuccess;
-            isSuccess = ld.loginCheck(account.getNickname(),account.getPassword());
+            boolean isSuccess = true;
             if(isSuccess == true){
-                message = "登陆成功";
+                message = "用户名设置成功";
             }
             else{
                 message = "用户名与密码不匹配";
@@ -64,5 +61,6 @@ public class LoginServlet extends HttpServlet {
         }
         out.flush();
         out.close();
+
     }
 }

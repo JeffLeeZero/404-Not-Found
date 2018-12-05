@@ -9,15 +9,16 @@ import java.sql.SQLException;
 
 public class SignUpDao {
     //增加数据
-    public int signUp(String nickname, String password) throws SQLException {
+    public String signUp(String nickname, String password, String telNum) throws SQLException {
         boolean notExisted = signUpCheck(nickname);
         if(notExisted == true){
-            String sql = "INSERT INTO account (account_nickname,account_password) VALUES(?,?)";
+            String sql = "INSERT INTO account (account_nickname,account_password,tel_num) VALUES(?,?,?)";
             Connection conn = DBUtil.getConnection();
             conn.setAutoCommit(false);
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, nickname);
             preparedStatement.setString(2, password);
+            preparedStatement.setString(3, telNum);
             preparedStatement.execute();
             conn.commit();
 
@@ -28,12 +29,12 @@ public class SignUpDao {
             //执行查询语句并返回结果集
             ResultSet resultSet = getIdStatement.executeQuery();
             resultSet.next();
-            int accountId = resultSet.getInt("account_id");
+            String accountId = resultSet.getString("account_id");
             conn.commit();
             conn.close();
             return accountId;
         }
-        return 0;
+        return null;
     }
 
     //查找账号
