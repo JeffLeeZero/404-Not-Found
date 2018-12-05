@@ -3,6 +3,7 @@ package com.bean;
 public class CommentBean {
     private String movieId = null;
     private String nickname = null;
+    private String movieName = null;
     private double movieScore;
     private String movieComment = null;
     private String submissionTime;
@@ -21,6 +22,14 @@ public class CommentBean {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
     }
 
     public double getMovieScore() {

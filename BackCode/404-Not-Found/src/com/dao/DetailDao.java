@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class DetailDao {
     //查找详情
-    public DetailBean detailQuery(String movieId) throws SQLException {
+    public DetailBean detailQuery(String accountId,String movieId) throws SQLException {
         String sql = "SELECT * FROM movie WHERE movie_id = ?";
         Connection conn = DBUtil.getConnection();
         conn.setAutoCommit(false);
@@ -26,6 +26,7 @@ public class DetailDao {
         if (resultSet.next()) {
             detail.setMovieId(movieId);
             detail.setMovieName(resultSet.getString("movie_name"));
+            detail.setFavourite(isFavourite(accountId,movieId));
             detail.setMovieScore(resultSet.getDouble("movie_score"));
             detail.setMovieIntro(resultSet.getString("movie_intro"));
             detail.setMoviePic1(resultSet.getString("movie_pic1"));
@@ -36,6 +37,43 @@ public class DetailDao {
         conn.commit();
         conn.close();
         return detail;
+    }
+
+    //查找喜欢
+    private boolean isFavourite(String accountId,String movieId) throws SQLException {
+        String sql = "SELECT * FROM favourite WHERE account_id=? AND movie_id=?";
+        Connection conn = DBUtil.getConnection();
+        conn.setAutoCommit(false);
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setInt(1, Integer.valueOf(accountId));
+        preparedStatement.setInt(2, Integer.valueOf(movieId));
+        preparedStatement.execute();
+        //执行查询语句并返回结果集
+        ResultSet resultSet = preparedStatement.executeQuery();
+        DetailBean detail = new DetailBean();
+
+        if (resultSet.next()) {
+            return resultSet.getBoolean("is_favourite");
+        }
+        conn.commit();
+        conn.close();
+        return false;
+    }
+
+    //设置喜欢
+    public boolean setFavourite(String accountId, String movieId, boolean isFavourite) throws SQLException {
+        String sql = "REPLACE INTO favourite (favourite_id,account_id,movie_id,is_favourite) VALUES(?,?,?,?); ";
+        Connection conn = DBUtil.getConnection();
+        conn.setAutoCommit(false);
+        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        preparedStatement.setString(1, accountId + "_" + movieId);
+        preparedStatement.setString(2, accountId);
+        preparedStatement.setString(3, movieId);
+        preparedStatement.setBoolean(4, isFavourite);
+        preparedStatement.execute();
+        conn.commit();
+        conn.close();
+        return true;
     }
 
     //插入详情

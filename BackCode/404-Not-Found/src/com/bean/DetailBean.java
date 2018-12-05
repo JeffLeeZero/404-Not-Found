@@ -3,6 +3,7 @@ package com.bean;
 public class DetailBean {
     private String movieId;
     private String movieName;
+    private boolean isFavourite;
     private double movieScore;
     private String movieIntro;
     private String moviePic1;
@@ -24,6 +25,14 @@ public class DetailBean {
 
     public void setMovieName(String movieName) {
         this.movieName = movieName;
+    }
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 
     public double getMovieScore() {
@@ -73,4 +82,5 @@ public class DetailBean {
     public void setMovieBackground(String movieBackground) {
         this.movieBackground = movieBackground;
     }
+
 }
