@@ -149,7 +149,7 @@ var vue = new Vue({
 				type:"POST",
 				url:url+ "NicknameServlet",
 				dataType:"json",
-				data:Json.stringify({
+				data:JSON.stringify({
 					"reqId":this.userId,
 					"reqParam":{
 						"nickname":this.userName,

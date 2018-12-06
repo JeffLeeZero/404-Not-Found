@@ -170,6 +170,7 @@ var vue = new Vue({
 				success: function(res) {
 					console.log("发表评论成功");
 					console.log(res);
+					this.getComments(0);
 				},
 				error: function(err) {
 					console.log("发表评论失败");
@@ -226,7 +227,7 @@ var vue = new Vue({
 					console.log(res);
 					that.commentCount = parseInt(res.message);
 					that.comments = res.resData;
-
+					document.getElementById("comment-content").scrollTop = 0;
 					
 					//that.getRanks(res.resData);
 				},

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>电影详情</title>
     <script src="js/vue.js"></script>
 	<script src="js/jquery-3.3.1.min.js"></script>	
 	<link rel="stylesheet" href="layui/css/layui.css">
@@ -32,7 +32,7 @@
 	    </div>
 	    <div class="comment-div" :id="commentStyle" v-if="commentOpen">
 	   		<img class="background" src="img/commentBackground.jpg" />
-	   		<div class="comment-content">
+	   		<div class="comment-content" id="comment-content">
 	   			<div class="comment-li" v-for="(item,index) in comments">
 	   				<div class="rank" :id="'rank'+index"></div>
 	   				<div class="userName">{{item.nickname}}</div>

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Title</title>
+		<title>个人中心</title>
 		<script src="js/vue.js"></script>
 		<script src="js/jquery-3.3.1.min.js"></script>
 		<link href="css/personal.css" rel="stylesheet" type="text/css">
@@ -22,6 +22,9 @@
 						<div class="score">{{item.movieScore}}分</div>
 						<div class="move_name">—————————《{{item.movieName}}》</div>
 					</div>
+					<div class="p_myComment" v-if="commentList.length == 0">
+						<div class="comment_content">似乎还没有发表过评论</div>
+					</div>
 					<div class="clear"></div>
 				</div>
 	
@@ -29,13 +32,16 @@
 			<div class="like">
 				<img src="img/music.png" onclick="musicController()" class="voice" />
 				<div class="myLike">我喜欢的电影</div>	
-				<img class="rightLike" @click="next()" src="img/right.png" v-show="prepare<6&&index<6"/>
+				<img class="rightLike" @click="next()" src="img/right.png" v-show="prepare<((listLength-1)/6+1)&&index<((listLength-1)/6+1)"/>
 				<img class="leftLike" @click="last()" src="img/left.png" v-show="prepare>1&&index>1"/>
 				<div class="myMovies" :class="animation[i]" v-for="i in 6" v-if="i==index||i==prepare">
 					<div class="like_move" v-for="j in 6"  v-if="6*(i-1)+j <= listLength">
 						<img :src="movieList[6*(i-1)+j-1].favPic +'.jpg'" class="moveImg">
 						<div class="movieName"><div class="name">{{movieList[6*(i-1)+j-1].movieName}}</div></div>
 					</div>
+				</div>
+				<div class="myMovies" v-if="listLength==0">
+					似乎还没有喜欢的电影
 				</div>
 			</div>
 		</div>

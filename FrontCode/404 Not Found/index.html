@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<title></title>
+		<title>观者心剧中人</title>
 		<script src="js/vue.js"></script>
 		<!--<script src="js/vuex.js"></script>-->
 		<script src="js/jquery-3.3.1.min.js"></script>
@@ -58,10 +58,10 @@
 				<a class="loginWithPhone" @click="loginWithAccount()">账号登陆</a>
 			</div>
 			<div class="login-div" v-if="newAccount">
-				<div style="position:absolute;left:2px;bottom: 50%;font-size: 3vh; color: #E8E8E8;">请设置您的昵称</div>
-				<input class="login-username" style="position: absolute;bottom: 33%;" placeholder="输入用户名" v-model="userName" />
-				<i class="layui-icon layui-icon-username" style="position:absolute;left:2px;bottom: 34.5%;font-size: 4vh; color: #826858;"></i>
-				<button class="layui-btn login-button" @click="newAccountSignUp()" style="position: absolute;bottom: 20%;">确认</button>
+				<div style="position:absolute;left:2px;bottom: 46%;font-size: 3vh; color: #E8E8E8;">请设置您的昵称</div>
+				<input class="login-username" style="position: absolute;bottom: 29%;" placeholder="输入用户名" v-model="userName" />
+				<i class="layui-icon layui-icon-username" style="position:absolute;left:2px;bottom: 30.5%;font-size: 4vh; color: #826858;"></i>
+				<button class="layui-btn login-button" @click="newAccountSignUp()" style="position: absolute;bottom: 16%;">确认</button>
 			</div>
 			<img src="img/music.png" onclick="musicController()" class="voice" />
 			<audio loop="loop">
