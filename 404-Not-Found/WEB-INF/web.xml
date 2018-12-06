@@ -76,22 +76,5 @@
         <url-pattern>/DetailServlet</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>FavouriteServlet</servlet-name>
-        <servlet-class>com.servlet.FavouriteServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>FavouriteServlet</servlet-name>
-        <url-pattern>/FavouriteServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>PersonalPageServlet</servlet-name>
-        <servlet-class>com.servlet.PersonalPageServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>PersonalPageServlet</servlet-name>
-        <url-pattern>/PersonalPageServlet</url-pattern>
-    </servlet-mapping>
 
 </web-app>
