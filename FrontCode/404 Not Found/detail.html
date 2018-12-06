@@ -39,7 +39,13 @@
 	   				<div class="user-comment">{{item.movieComment}}</div>
 	   				<div class="commit-time">{{item.submissionTime}}</div>
 	   			</div>
-	   			<div class="page" id="page"></div>
+	   			<div class="comment-li" v-if="comments.length==0">
+	   				<div class="rank"></div>
+	   				<div class="userName"></div>
+	   				<div class="user-comment">似乎还没有评论</div>
+	   				<div class="commit-time"></div>
+	   			</div>
+	   			<div class="page" id="page" v-show="comments.length>0"></div>
 	   		</div>
 	   		<div class="myrank">你的评分： <div id="myrank"></div></div>
 	   		
