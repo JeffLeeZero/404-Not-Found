@@ -37,6 +37,9 @@ var vue = new Vue({
 		commentCount: 0
 	},
 	methods: {
+		toPersonPage:function(){
+			window.open("personal.html")
+		},
 		likeIt:function(index){
 			var that = this;
 			$.ajax({

@@ -51,10 +51,23 @@ html,body{
 .likeButton:hover{
     opacity: 1;
 }*/
+
+.personPage{
+	position: absolute;
+	right: 1%;
+	width: 3.8%;
+	z-index: 1000;
+	opacity: 0.6;
+}
+
+.personPage:hover{
+	opacity: 1;
+}
+
 .firstPage .voice{
 	position: absolute;
 	top: 0%;
-    right: 2%;
+    right: 10.4%;
     width: 4%;
     transition: all 0.3s linear;
     opacity: 0.7;
@@ -88,7 +101,7 @@ html,body{
 .back{
     position: absolute;
     top: 0%;
-    right: 2%;
+    right: 5.2%;
     width: 5%;
     transition: all 0.3s linear;
     opacity: 0.7;

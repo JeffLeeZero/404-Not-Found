@@ -15,6 +15,9 @@ var vue = new Vue({
 		}
 	},
 	methods:{
+		toPersonPage:function(){
+			window.open("personal.html")
+		},
 		movieChoose:function(index){
 			if(index==6)
 			{

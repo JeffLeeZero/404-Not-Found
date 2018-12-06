@@ -14,6 +14,7 @@
 		<div class="aboutPage" :class="animation[no]" v-for="(item, no) in movies" v-if="no == index||no==prepare">
 	        <img class="backImg" :src="item.movieBackground+'.jpg'">
 	        <div class="black"></div>     <!-- 黑色背景布-->
+	        <img src="img/personPage.png" @click="toPersonPage()" class="personPage"/>
 	        <img src="img/music.png" onclick="musicController()" class="voice" />
 	        <img src="img/comment.png" class="comment" @click="openComment()"/>
 	        <img src="img/喜欢按钮2.png" class="likedButton" @click="unlikeIt(no)" v-if="item.isFavourite">
