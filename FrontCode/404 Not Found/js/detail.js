@@ -57,6 +57,10 @@ var vue = new Vue({
 					if(res.isSuccess){
 						that.movies[index].isFavourite = true;
 					}
+				},
+				error:function(err){
+					console.log("传到后台的参数是"+this.data);
+					console.log("报错信息"+err);
 				}
 			})
 		},
@@ -77,6 +81,10 @@ var vue = new Vue({
 					if(res.isSuccess){
 						that.movies[index].isFavourite = false;
 					}
+				},
+				error:function(err){
+					console.log("传到后台的参数是"+this.data);
+					console.log("报错信息"+err);
 				}
 			})
 		},

@@ -48,6 +48,7 @@ $.ajax({
 		vue.$data.listLength = res.resData.favMovie.length;
 	},
 	error:function(err){
-		console.log(err);
+		console.log("传到后台的参数是"+this.data);
+		console.log("报错信息"+err);
 	}
 });
