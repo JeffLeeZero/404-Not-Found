@@ -42,6 +42,7 @@ var vue = new Vue({
 		},
 		likeIt:function(index){
 			var that = this;
+			this.movies[index].isFavourite = true;
 			$.ajax({
 				type:"POST",
 				dataType:"json",
@@ -67,6 +68,7 @@ var vue = new Vue({
 		},
 		unlikeIt:function(index){
 			var that = this;
+			this.movies[index].isFavourite = false;
 			$.ajax({
 				type:"POST",
 				dataType:"json",

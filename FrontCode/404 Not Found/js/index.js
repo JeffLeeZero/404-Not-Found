@@ -149,6 +149,13 @@ var vue = new Vue({
 				type:"POST",
 				url:url+ "NicknameServlet",
 				dataType:"json",
+				data:Json.stringify({
+					"reqId":this.userId,
+					"reqParam":{
+						"nickname":this.userName,
+						"telNum":this.userPhone
+					}
+				}),
 				success:function(res){
 					window.localStorage.reqId = res.reqId;
 					window.localStorage.userName = that.userName;
