@@ -60,7 +60,8 @@ var vue = new Vue({
 				},
 				error:function(err){
 					console.log("传到后台的参数是"+this.data);
-					console.log("报错信息"+err);
+					console.log("报错信息");
+					console.log(err);
 				}
 			})
 		},
