@@ -19,8 +19,8 @@
 				<div class="div_comment">
 					<div class="p_myComment" v-for="item in commentList">
 						<div class="comment_content">{{item.movieComment}}</div>
-						<div class="score">{{item.movieScore}}</div>
-						<div class="move_name">{{item.movieName}}</div>
+						<div class="score">{{item.movieScore}}分</div>
+						<div class="move_name">—————————《{{item.movieName}}》</div>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -40,6 +40,9 @@
 			</div>
 		</div>
 		
+		<audio loop="loop">
+			<source ></source>
+		</audio>
 		<div class="musicPlayer" id="bgmusic" style="display: none;">
 			<div class="disc"></div>
 			<div class="musicName">歌名</div>

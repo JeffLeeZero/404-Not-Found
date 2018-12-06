@@ -1,4 +1,12 @@
 @font-face {
+    font-family: "OurFont";
+    src: url("../font/HaTian-SuiXing.ttf") format("truetype");
+    font-weight: normal;
+  	font-style: normal;
+}
+
+
+@font-face {
 	font-family:"Slogan";
 	src: url("../font/方正吕建德字体简体.ttf") format("truetype");
     font-weight: normal;
@@ -49,11 +57,10 @@ html,body{
 }
 .div_comment{
     position: absolute;
-    top: 36%;
+    top: 35%;
     width: 100%;
-    height: 59%;
+    height: 60%;
     overflow-y:scroll;
-    border-top:1px solid;
 	display: flex;
 	flex-direction: column;
 	padding-top: 5%;
@@ -85,7 +92,7 @@ html,body{
     width: 66.5%;
     margin-bottom: 10%;
     float:left;
-    font-size: 4.5vh;
+    font-size: 3.5vh;
 }
 .score{
     position: absolute;
@@ -105,6 +112,7 @@ html,body{
     margin-bottom: 4%;
     font-size: 3.5vh;
     text-align: right;
+    font-family: OurFont;
 }
 .like{
     position: absolute;

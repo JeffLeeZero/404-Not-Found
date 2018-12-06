@@ -37,7 +37,7 @@ var vue = new Vue({
 
 $.ajax({
 	type:"POST",
-	url:url+"PersonalPageServlet",
+	url:url + "PersonalPageServlet",
 	dataType:"json",
 	data:JSON.stringify({
 		"reqId":window.localStorage.reqId

@@ -17,8 +17,8 @@
 	        <img src="img/personPage.png" @click="toPersonPage()" class="personPage"/>
 	        <img src="img/music.png" onclick="musicController()" class="voice" />
 	        <img src="img/comment.png" class="comment" @click="openComment()"/>
-	        <img src="img/喜欢按钮2.png" class="likedButton" @click="unlikeIt(no)" v-if="item.isFavourite">
-			<img src="img/喜欢按钮1.png" class="likeButton" @click="likeIt(no)" v-if="!item.isFavourite">
+	        <img src="img/喜欢按钮2.png" class="likedButton" @click="unlikeIt(no)" v-show="item.isFavourite">
+			<img src="img/喜欢按钮1.png" class="likeButton" @click="likeIt(no)" v-show="!item.isFavourite">
 	        <div class="moveName">{{item.movieName}}</div>
 	        <div class="picture">
 	            <img class="picture1" :src="item.moviePic1+'.jpg'"/>
