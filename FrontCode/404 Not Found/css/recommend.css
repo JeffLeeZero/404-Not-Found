@@ -39,23 +39,23 @@ html,body{
     opacity: 0.6;
     transition: 0.3s linear;
 }
-.likeButton{
+/*.likeButton{
     position: absolute;
     right: 8%;
     top: 2%;
-    width: 4%;
+    width: 3%;
     z-index: 10;
     opacity: 0.6;
     transition: 0.3s linear;
 }
 .likeButton:hover{
     opacity: 1;
-}
+}*/
 .firstPage .voice{
 	position: absolute;
 	top: 0%;
     right: 2%;
-    width: 5%;
+    width: 4%;
     transition: all 0.3s linear;
     opacity: 0.7;
 }

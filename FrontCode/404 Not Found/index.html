@@ -46,16 +46,22 @@
 				<button @click="register()" class="layui-btn register-button">注册</button>
 				<a class="loginWithPhone" @click="loginWithPhone()">手机验证码登陆</a>
 			</div>
-			<div class="login-div" v-if="loginning&&withPhone">
+			<div class="login-div" v-if="loginning&&withPhone&&!newAccount">
 				<div class="empty"></div>
 				<i class="layui-icon layui-icon-cellphone" style="position:absolute;left:2px;top:50%;font-size: 4vh; color: #826858;"></i>
 				<input class="login-username" placeholder="输入手机号" v-model="userPhone" />
 				<i class="layui-icon layui-icon-vercode" style="position:absolute;left:2px;top:63%;font-size: 4vh; color: #826858;"></i>
-				<input class="login-vercode" placeholder="输入验证码" v-model="vercode" />
+				<input class="login-vercode" placeholder="输入验证码" v-model="inputVercode" />
 				<!--<span style="position: absolute;top: 63%;">{{message2}}</span>-->
 				<button @click="loginWithVercode()" class="layui-btn login-button">登录</button>
 				<button @click="getVercode(this)" :class="getVercodeStyle"  class="register-button">获取验证码{{cutDown}}</button>
 				<a class="loginWithPhone" @click="loginWithAccount()">账号登陆</a>
+			</div>
+			<div class="login-div" v-if="newAccount">
+				<div style="position:absolute;left:2px;bottom: 50%;font-size: 3vh; color: #E8E8E8;">请设置您的昵称</div>
+				<input class="login-username" style="position: absolute;bottom: 33%;" placeholder="输入用户名" v-model="userName" />
+				<i class="layui-icon layui-icon-username" style="position:absolute;left:2px;bottom: 34.5%;font-size: 4vh; color: #826858;"></i>
+				<button class="layui-btn login-button" @click="newAccountSignUp()" style="position: absolute;bottom: 20%;">确认</button>
 			</div>
 			<img src="img/music.png" onclick="musicController()" class="voice" />
 			<audio loop="loop">

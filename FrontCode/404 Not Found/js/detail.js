@@ -37,6 +37,46 @@ var vue = new Vue({
 		commentCount: 0
 	},
 	methods: {
+		likeIt:function(index){
+			var that = this;
+			$.ajax({
+				type:"POST",
+				dataType:"json",
+				url:url+"FavouriteServlet",
+				data:JSON.stringify({
+					"reqId":window.localStorage.reqId,
+					"reqParam":{
+						"movieId":this.movies[index].movieId,
+						"isFavourite":true
+					}
+				}),
+				success:function(res){
+					if(res.isSuccess){
+						that.movies[index].isFavourite = true;
+					}
+				}
+			})
+		},
+		unlikeIt:function(index){
+			var that = this;
+			$.ajax({
+				type:"POST",
+				dataType:"json",
+				url:url+"FavouriteServlet",
+				data:JSON.stringify({
+					"reqId":window.localStorage.reqId,
+					"reqParam":{
+						"movieId":this.movies[index].movieId,
+						"isFavourite":false
+					}
+				}),
+				success:function(res){
+					if(res.isSuccess){
+						that.movies[index].isFavourite = false;
+					}
+				}
+			})
+		},
 		nextMovie: function() {
 			this.prepare++;
 			this.animation[this.prepare] = "enterFromDown";

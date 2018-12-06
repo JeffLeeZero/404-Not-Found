@@ -18,9 +18,11 @@ var vue = new Vue({
 		withPhone:false,
 		newAccount:false,
 		time:0,
-		vercode:"",
+		vercode:"adafddddwwerr",
 		getVercodeStyle:"layui-btn",
 		userPhone:"",
+		userId:"",
+		inputVercode:"",
 	},
 	computed:{
 		cutDown:{
@@ -78,24 +80,88 @@ var vue = new Vue({
 				}); 
 				return;
 			}
-			var that = this;
+			if(this.inputVercode===this.vercode){
+				if(this.userId===null||this.userName==""){
+					this.newAccount = true;
+				}else{
+					window.localStorage.reqId = this.reqId;
+					window.localStorage.userName = this.userName;
+					window.location.href = "recommend.html";
+				}
+			}else{
+				layui.use('layer', function(){
+				  	var layer = layui.layer;
+				  	layer.msg("验证码错误", {icon: 0,time: 1500}); 
+				});
+			}
 		},
 		getVercode:function(node){
-			console.log("click");
-			node.disabled = true;
-			this.time = 60;
-			this.getVercodeStyle = "layui-btn-disabled";
+			if(this.userPhone=="")
+			{
+				layui.use('layer', function(){
+				  var layer = layui.layer;
+				  layer.msg("请输入手机号", {icon: 0,time: 1500}); 
+				}); 
+				
+				return;
+			}
 			var that = this;
-			var i = setInterval(()=>{
-				that.time--;
-				console.log(that.time);
-				if(that.time==0)
-				{
-					clearInterval(i);
-					that.getVercodeStyle = "layui-btn";
-					node.disabled = false;
+			$.ajax({
+				type:"POST",
+				url:url + "SmsLoginServlet",
+				data:JSON.stringify({
+					"reqId":"",
+					"reqParam":{
+						"telNum":that.userPhone
+					}
+				}),
+				dataType:"json",
+				success:function(res){
+					that.vercode = res.resData.verificationCode;
+					that.userId = res.reqId;
+					node.disabled = true;
+					that.time = 60;
+					that.userName = res.message;
+					that.getVercodeStyle = "layui-btn-disabled";
+					var i = setInterval(()=>{
+						that.time--;
+						console.log(that.time);
+						if(that.time==0)
+						{
+							clearInterval(i);
+							that.getVercodeStyle = "layui-btn";
+							node.disabled = false;
+						}
+					},1000)
+				},
+				error:function(err){
+					console.log(err);
+					layui.use('layer', function(){
+						var layer = layui.layer;
+						layer.msg("网络异常，请重试", {icon: 2,time: 1500, anim: 6});
+					}); 
 				}
-			},1000)
+			});
+		},
+		newAccountSignUp:function(){
+			var that = this;
+			$.ajax({
+				type:"POST",
+				url:url+ "NicknameServlet",
+				dataType:"json",
+				success:function(res){
+					window.localStorage.reqId = res.reqId;
+					window.localStorage.userName = that.userName;
+					window.location.href = "recommend.html";
+				},
+				error:function(err){
+					console.log(err);
+					layui.use('layer', function(){
+						var layer = layui.layer;
+						layer.msg("网络异常，请重试", {icon: 2,time: 1500, anim: 6});
+					}); 
+				}
+			});
 		},
 		login:function(){
 			if(this.userName=="")

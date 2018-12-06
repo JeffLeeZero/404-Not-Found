@@ -1,84 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="js/vue.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <link href="css/personal.css" rel="stylesheet" type="text/css">
-    <link href="css/musicPlayer.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-    <div class="p_comment">
-        <div class="p_user">用户名</div>
-        <div class="p_cMove">评论过的电影</div>
-        <div class="p_hr"></div>
-        <div class="div_comment">
-            <div class="p_myComment">
-                <div class="comment_content">评论</div>
-                <div class="score">分数</div>
-                <div class="move_name">电影名</div>
-            </div>
-            <div class="p_myComment">
-                <div class="comment_content">dsfs</div>
-                <div class="score"></div>
-                <div class="move_name"></div>
-            </div>
-            <div class="p_myComment">
-                <div class="comment_content">dsfs</div>
-                <div class="score"></div>
-                <div class="move_name"></div>
-            </div>
-            <div class="p_myComment">
-                <div class="comment_content">dsfs</div>
-                <div class="score"></div>
-                <div class="move_name"></div>
-            </div>
-            <div class="clear"></div>
-        </div>
 
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<script src="js/vue.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<link href="css/personal.css" rel="stylesheet" type="text/css">
+		<link href="css/musicPlayer.css" rel="stylesheet" type="text/css">
+	</head>
 
-        </div>
-    <div class="like">
-        <img src="img/music.png" onclick="musicController()" class="voice" />
-        <img class="back" src="img/star.png" onclick="back()">
-        <div class="myLike">我喜欢的电影</div>
-        <div class="like_move1">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="like_move2">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="like_move3">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="like_move4">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="like_move5">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="like_move6">
-            <img src="img/p3.jpg" class="moveImg">
-        </div>
-        <div class="nextLike">下一页</div>
-    </div>
-    <div class="musicPlayer" id="bgmusic" style="display: none;">
-        <div class="disc"></div>
-        <div class="musicName">歌名</div>
-        <div class="beforeMusic" onclick="beforeMusic()"></div>
-        <div class="pauseMusic" onclick="pause()"></div>
-        <div class="play" onclick="play()"></div>
-        <div class="nextMusic" onclick="nextMusic()"></div>
-        <div class="bar">
-            <div class="box"></div>
+	<body>
+		<div style="position: absolute;top: 0;left: 0;height: 100%;width: 100%;" id="person">
+			<div class="p_comment">
+				<div class="p_user">{{nickname}}</div>
+				<div class="p_cMove">评论过的电影</div>
+				<div class="p_hr"></div>
+				<div class="div_comment">
+					<div class="p_myComment" v-for="item in commentList">
+						<div class="comment_content">{{item.movieComment}}</div>
+						<div class="score">{{item.movieScore}}</div>
+						<div class="move_name">{{item.movieName}}</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+	
+			</div>
+			<div class="like">
+				<img src="img/music.png" onclick="musicController()" class="voice" />
+				<div class="myLike">我喜欢的电影</div>	
+				<img class="rightLike" @click="next()" src="img/right.png" v-show="prepare<6&&index<6"/>
+				<img class="leftLike" @click="last()" src="img/left.png" v-show="prepare>1&&index>1"/>
+				<div class="myMovies" :class="animation[i]" v-for="i in 6" v-if="i==index||i==prepare">
+					<div class="like_move" v-for="j in 6"  v-if="6*(i-1)+j <= listLength">
+						<img :src="movieList[6*(i-1)+j-1].favPic +'.jpg'" class="moveImg">
+						<div class="movieName"><div class="name">{{movieList[6*(i-1)+j-1].movieName}}</div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="musicPlayer" id="bgmusic" style="display: none;">
+			<div class="disc"></div>
+			<div class="musicName">歌名</div>
+			<div class="beforeMusic" onclick="beforeMusic()"></div>
+			<div class="pauseMusic" onclick="pause()"></div>
+			<div class="play" onclick="play()"></div>
+			<div class="nextMusic" onclick="nextMusic()"></div>
+			<div class="bar">
+				<div class="box"></div>
 
-        </div>
-        <div class="allVoice">
-            <div class="voiceBar"></div>
+			</div>
+			<div class="allVoice">
+				<div class="voiceBar"></div>
 
-        </div>
-    </div>
-    <script src="js/recommend.js" type="text/javascript"></script>
-</body>
+			</div>
+		</div>
+		<script src="js/personal.js"></script>
+		<script src="js/musicPlayer.js"></script>
+	</body>
+	
 </html>

@@ -111,7 +111,26 @@ html, body{
 .voice:hover{
 	opacity: 1;
 }
+.likeButton{
+    position: absolute;
+    right: 13%;
+    top: 2%;
+    width: 3%;
+    z-index: 1000;
+    opacity: 0.6;
+    transition: 0.3s linear;
+}
+.likeButton:hover{
+    opacity: 1;
+}
 
+.likedButton{
+	position: absolute;
+    right: 13%;
+    top: 2%;
+    width: 3%;
+    z-index: 1000;
+}
 .comment{
     position: absolute;
     right: 2%;
