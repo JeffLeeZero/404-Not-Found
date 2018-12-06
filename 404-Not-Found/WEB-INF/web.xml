@@ -14,12 +14,30 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SmsLoginServlet</servlet-name>
+        <servlet-class>com.servlet.SmsLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SmsLoginServlet</servlet-name>
+        <url-pattern>/SmsLoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>com.servlet.SignUpServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NicknameServlet</servlet-name>
+        <servlet-class>com.servlet.NicknameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NicknameServlet</servlet-name>
+        <url-pattern>/NicknameServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -58,5 +76,22 @@
         <url-pattern>/DetailServlet</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <servlet-class>com.servlet.FavouriteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FavouriteServlet</servlet-name>
+        <url-pattern>/FavouriteServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PersonalPageServlet</servlet-name>
+        <servlet-class>com.servlet.PersonalPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PersonalPageServlet</servlet-name>
+        <url-pattern>/PersonalPageServlet</url-pattern>
+    </servlet-mapping>
 
 </web-app>
