@@ -5,6 +5,8 @@ import com.bean.RequestBean;
 import com.bean.ResponseBean;
 import com.bean.VerificationCode;
 import com.dao.LoginDao;
+import com.github.qcloudsms.SmsMultiSender;
+import com.github.qcloudsms.SmsMultiSenderResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -68,11 +70,11 @@ public class SmsLoginServlet extends HttpServlet {
         // 指定模板ID单发短信
 
         try{
-            /*String[] params = {verificationCode,"1"};
+            String[] params = {verificationCode,"1"};
             SmsMultiSender msender = new SmsMultiSender(appid, appkey);
             SmsMultiSenderResult result =  msender.sendWithParam("86", phoneNumbers,
                     templateId, params, smsSign, "", "");  // 签名参数未提供或者为空时，会使用默认签名发送短信
-            System.out.print(result);*/
+            System.out.print(result);
 
             LoginDao ld = new LoginDao();
             ResponseBean<VerificationCode> loginResponse = new ResponseBean <>();
@@ -90,12 +92,12 @@ public class SmsLoginServlet extends HttpServlet {
             loginResponse.setResData(resData);
 
             boolean isSuccess = false;
-            /*if(result.result == 0){
+            if(result.result == 0){
                 isSuccess = true;
             }
             else{
                 isSuccess = false;
-            }*/
+            }
 
             loginResponse.setMessage(message);
             loginResponse.setSuccess(isSuccess);
