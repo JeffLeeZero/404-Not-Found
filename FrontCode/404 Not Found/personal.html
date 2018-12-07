@@ -22,9 +22,9 @@
 						<div class="score">{{item.movieScore}}分</div>
 						<div class="move_name">—————————《{{item.movieName}}》</div>
 					</div>
-					<div class="p_myComment" v-if="commentList.length == 0">
-						<div class="comment_content"></div>
-						<div class="comment_content">似乎还没有发表过评论</div>
+					<div class="p_myComment" style="border-bottom: hidden;" v-if="commentList.length == 0">
+						<div class="score"></div>
+						<div class="comment_content" style="text-align: center;">似乎还没有发表过评论</div>
 						<div class="move_name"></div>
 					</div>
 					<div class="clear"></div>
@@ -42,7 +42,7 @@
 						<div class="movieName"><div class="name">{{movieList[6*(i-1)+j-1].movieName}}</div></div>
 					</div>
 				</div>
-				<div class="myMovies" v-if="listLength==0">
+				<div class="myMovies" v-if="listLength==0" style="font-size: 3.8vh;">
 					似乎还没有喜欢的电影
 				</div>
 			</div>

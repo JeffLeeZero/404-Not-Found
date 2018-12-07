@@ -16,6 +16,7 @@ var vue = new Vue({
 	},
 	methods:{
 		toPersonPage:function(){
+			console.log("dfafafd");
 			window.open("personal.html")
 		},
 		movieChoose:function(index){
@@ -35,6 +36,12 @@ var vue = new Vue({
 		}
 	}
 });
+
+function toPersonPage(){
+	console.log("dfafafd");
+	window.open("personal.html")
+}
+
 function back(){
 	vue.$data.chosen = false;
     var self=document.getElementsByClassName("starPage")[0];
@@ -42,6 +49,7 @@ function back(){
     var behind= document.getElementsByClassName("firstPage")[0];
     behind.style.display="block";
 }
+
 function change(constell){
 	vue.$data.constellation = constell;
 	$.ajax({

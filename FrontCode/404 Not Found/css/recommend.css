@@ -54,9 +54,9 @@ html,body{
 
 .personPage{
 	position: absolute;
-	right: 1%;
-	top: 0.5%;
-	width: 3.5%;
+	right: 1.2%;
+	top: 1%;
+	width: 2.8%;
 	z-index: 1000;
 	opacity: 0.6;
 }

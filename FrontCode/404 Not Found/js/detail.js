@@ -154,7 +154,8 @@ var vue = new Vue({
 			}, 1000);
 
 		},
-		sendComment: function() {
+		sendComment: function () {
+			var that = this;
 			$.ajax({
 				type: "POST",
 				url: url + "SetCommentServlet",
@@ -170,7 +171,21 @@ var vue = new Vue({
 				success: function(res) {
 					console.log("发表评论成功");
 					console.log(res);
-					this.getComments(0);
+					that.getComments(0);
+					layui.use('laypage', function() {
+						var laypage = layui.laypage;
+						//执行一个laypage实例
+						laypage.render({
+							elem: 'page', //注意，这里的 test1 是 ID，不用加 # 号
+							count: that.commentCount,
+							theme: "#a1a2a3",
+							jump: function(obj, first) {
+								if(!first) {
+									that.getComments(obj.curr-1);
+								}
+							} //数据总数，从服务端得到
+						});
+					});
 				},
 				error: function(err) {
 					console.log("发表评论失败");
