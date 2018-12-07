@@ -13,7 +13,7 @@ import java.util.List;
 public class CommentDao {
     //查找评论
     public List<CommentBean> commentQuery(String movieId,int curPage,int pageSize) throws SQLException {
-        String sql = "SELECT * FROM comment WHERE movie_id = ? ORDER BY submission_time LIMIT ?,? ";
+        String sql = "SELECT * FROM comment WHERE movie_id = ? ORDER BY submission_time DESC LIMIT ?,? ";
         Connection conn = DBUtil.getConnection();
         conn.setAutoCommit(false);
         PreparedStatement preparedStatement = conn.prepareStatement(sql);
