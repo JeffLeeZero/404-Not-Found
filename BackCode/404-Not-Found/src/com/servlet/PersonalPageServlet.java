@@ -1,9 +1,11 @@
 package com.servlet;
 
 import com.bean.*;
+import com.dao.MySlopeOneRecommender;
 import com.dao.PersonalPageDao;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +40,12 @@ public class PersonalPageServlet extends HttpServlet {
 
         ResponseBean<PersonalPage> personalPageResponse = new ResponseBean <>();
         personalPageResponse.setReqId(detailRequest.getReqId());
+
+        String path = this.getServletContext().getRealPath("movie_preferences.txt");
+        List<RecommendedItem> recommendation = null;
+        MySlopeOneRecommender msor = new MySlopeOneRecommender();
+        //拿到推荐的电影
+        recommendation = msor.mySlopeOneRecommender(11,12,path);
 
         //判断
         try{

@@ -9,11 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RecommendDao {
     //推荐电影
-    public List<RecommendBean> recommendQuery(String reqId,int constellationNum) throws SQLException {
+    public List<RecommendBean> recommendQuery(String reqId,int constellationNum, int nums[]) throws SQLException {
         String firstSql = "SELECT * FROM movie WHERE movie_id = ?";
         Connection conn = DBUtil.getConnection();
         conn.setAutoCommit(false);
@@ -37,7 +36,7 @@ public class RecommendDao {
 
         conn.commit();
         conn.close();
-        int[] recommendNum = recommend();
+        int[] recommendNum = nums;
         for(int i = 0; i<5; i++){
             RecommendBean recommend = movieQuery(recommendNum[i]);
             recommendList.add(recommend);
@@ -71,18 +70,5 @@ public class RecommendDao {
         return  recommend;
     }
 
-    public int[] recommend(){
-        Random rand = new Random();
-        int[] recommendNum = new int[5];
-        for(int i=0; i<5; i++) {
-            recommendNum[i] = rand.nextInt(12) + 13;
-            for (int j=0; j<i;j++){
-                if (recommendNum[j] == recommendNum[i]){//如果arr[i]与arr[j]相同，则arr[i]重新取值，并检验
-                    i--;
-                    break;
-                }
-            }
-        }
-        return recommendNum;
-    }
+
 }

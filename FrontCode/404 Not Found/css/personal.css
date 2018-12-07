@@ -63,7 +63,7 @@ html,body{
     overflow-y:scroll;
 	display: flex;
 	flex-direction: column;
-	padding-top: 5%;
+	padding-top: 3%;
 }
 /*滑动条样式*/
 .div_comment::-webkit-scrollbar {
@@ -87,9 +87,10 @@ html,body{
 }
 .comment_content{
     position: relative;
-    top: 19.3%;
+    top: 14.3%;
     left: 10.5%;
     width: 66.5%;
+    margin-top: 5%;
     margin-bottom: 10%;
     float:left;
     font-size: 3.5vh;
@@ -108,9 +109,9 @@ html,body{
     bottom: 0;
     left: 10.5%;
     width: 66.5%;
-    height: 3%;
+    height: 4vh;
     margin-bottom: 4%;
-    font-size: 3.5vh;
+    font-size: 3vh;
     text-align: right;
     font-family: OurFont;
 }
