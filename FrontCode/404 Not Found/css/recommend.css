@@ -33,7 +33,6 @@ html,body{
 .voice{
     position: absolute;
     right: 10.4%;
-    top: 1%;
     width: 4%;
     z-index: 10;
     opacity: 0.6;
@@ -55,7 +54,7 @@ html,body{
 .personPage{
 	position: absolute;
 	right: 1.2%;
-	top: 1%;
+	top: 1.2%;
 	width: 2.8%;
 	z-index: 1000;
 	opacity: 0.6;
@@ -101,7 +100,7 @@ html,body{
 
 .back{
     position: absolute;
-    top: 0%;
+    top: -0.6%;
     right: 5.2%;
     width: 5%;
     transition: all 0.3s linear;

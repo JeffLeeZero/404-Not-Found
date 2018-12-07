@@ -102,9 +102,9 @@ html, body{
 
 .personPage{
 	position: absolute;
-	right: 2%;
-	top: 0.5%;
-	width: 3.5%;
+	right: 1.2%;
+	top: 1%;
+	width: 2.8%;
 	z-index: 1000;
 	opacity: 0.6;
 }
@@ -115,10 +115,10 @@ html, body{
 
 .voice{
     position: absolute;
-    right: 10%;
+    right: 8.5%;
     width: 4%;
     z-index: 1000;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: 0.3s linear;
 }
 
@@ -127,7 +127,7 @@ html, body{
 }
 .likeButton{
     position: absolute;
-    right: 15%;
+    right: 13%;
     top: 2%;
     width: 3%;
     z-index: 1000;
@@ -140,14 +140,14 @@ html, body{
 
 .likedButton{
 	position: absolute;
-    right: 15%;
+    right: 13%;
     top: 2%;
     width: 3%;
     z-index: 1000;
 }
 .comment{
     position: absolute;
-    right: 6.2%;
+    right: 4.6%;
     width: 3.8%;
     z-index: 10;
     opacity: 0.6;
@@ -440,4 +440,23 @@ textarea::-webkit-input-placeholder{
 	height: 10%;
 	top: 45%;
 	right: 0.5%;
+}
+
+#loading{
+	background-color: #FFFFFF;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+}
+
+#loading i{
+	animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
 }

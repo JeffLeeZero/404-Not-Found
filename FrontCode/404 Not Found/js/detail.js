@@ -34,7 +34,8 @@ var vue = new Vue({
 		comments: [],
 		myRank: "10",
 		myComment: "",
-		commentCount: 0
+		commentCount: 0,
+		likeThis:false,
 	},
 	methods: {
 		toPersonPage:function(){
@@ -42,7 +43,7 @@ var vue = new Vue({
 		},
 		likeIt:function(index){
 			var that = this;
-			this.movies[index].isFavourite = true;
+			this.likeThis = true;
 			$.ajax({
 				type:"POST",
 				dataType:"json",
@@ -57,8 +58,6 @@ var vue = new Vue({
 				success:function(res){
 					if(res.isSuccess){
 						that.movies[index].isFavourite = true;
-						document.getElementById("unlikeIt"+index).style.display = "block";
-						document.getElementById("likeIt"+index).style.display = "none";
 					}
 				},
 				error:function(err){
@@ -70,7 +69,7 @@ var vue = new Vue({
 		},
 		unlikeIt:function(index){
 			var that = this;
-			this.movies[index].isFavourite = false;
+			this.likeThis = false;
 			$.ajax({
 				type:"POST",
 				dataType:"json",
@@ -85,8 +84,6 @@ var vue = new Vue({
 				success:function(res){
 					if(res.isSuccess){
 						that.movies[index].isFavourite = false;
-						document.getElementById("unlikeIt"+index).style.display = "none";
-						document.getElementById("likeIt"+index).style.display = "block";
 					}
 				},
 				error:function(err){
@@ -100,13 +97,12 @@ var vue = new Vue({
 			this.prepare++;
 			this.animation[this.prepare] = "enterFromDown";
 			this.animation[this.index] = "leaveFromDown";
-			if(this.movies[this.prepare].isFavourite==true){
-				document.getElementById("unlikeIt"+index).style.display = "block";
-				document.getElementById("likeIt"+index).style.display = "none";
-			}else{	
-				document.getElementById("unlikeIt"+index).style.display = "none";
-				document.getElementById("likeIt"+index).style.display = "block";
-			}
+				if(this.movies[this.prepare].isFavourite)
+				{
+					this.likeThis = true;
+				}else{
+					this.likeThis = false;
+				}
 			setTimeout(() => {
 				this.index++;
 				setRank('#level' + this.index, parseInt(this.movies[this.index].movieScore), false, true);
@@ -117,15 +113,14 @@ var vue = new Vue({
 			this.prepare--;
 			this.animation[this.prepare] = "enterFromUp";
 			this.animation[this.index] = "leaveFromUp";
-			if(this.movies[this.prepare].isFavourite==true){
-				document.getElementById("unlikeIt"+index).style.display = "block";
-				document.getElementById("likeIt"+index).style.display = "none";
-			}else{	
-				document.getElementById("unlikeIt"+index).style.display = "none";
-				document.getElementById("likeIt"+index).style.display = "block";
-			}
 			setTimeout(() => {
 				this.index--;
+				if(this.movies[this.index].isFavourite)
+				{
+					this.likeThis = true;
+				}else{
+					this.likeThis = false;
+				}
 				setRank('#level' + this.index, parseInt(this.movies[this.index].movieScore), false, true)
 			}, 700);
 		},
@@ -187,8 +182,7 @@ var vue = new Vue({
 					}
 				}),
 				success: function(res) {
-					console.log("发表评论成功");
-					console.log(res);
+					that.myComment = "";
 					that.getComments(0);
 					layui.use('laypage', function() {
 						var laypage = layui.laypage;
@@ -311,6 +305,10 @@ var getMovie = function(id) {
 	});
 }
 
+setTimeout(()=>{
+	document.getElementById("loading").style.display = "none";
+},1000);
+
 console.log(window.localStorage);
 $.ajax({
 	type: "POST",
@@ -326,6 +324,7 @@ $.ajax({
 		vue.$data.movies[vue.$data.index] = res.resData;
 		setRank('#level' + vue.$data.index, parseInt(res.resData.movieScore), false, true);
 		vue.$data.show = true;
+		vue.$data.likeThis = vue.$data.movies[vue.$data.index].isFavourite;
 	},
 	error: function(err) {
 		console.log(err);
