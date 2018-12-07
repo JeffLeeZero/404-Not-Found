@@ -129,7 +129,7 @@ html, body{
     position: absolute;
     right: 13%;
     top: 2%;
-    width: 3%;
+    width: 2.6%;
     z-index: 1000;
     opacity: 0.6;
     transition: 0.3s linear;
@@ -142,7 +142,7 @@ html, body{
 	position: absolute;
     right: 13%;
     top: 2%;
-    width: 3%;
+    width: 2.6%;
     z-index: 1000;
 }
 .comment{
