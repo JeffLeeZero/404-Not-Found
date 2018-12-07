@@ -57,6 +57,8 @@ var vue = new Vue({
 				success:function(res){
 					if(res.isSuccess){
 						that.movies[index].isFavourite = true;
+						document.getElementById("unlikeIt"+index).style.display = "block";
+						document.getElementById("likeIt"+index).style.display = "none";
 					}
 				},
 				error:function(err){
@@ -83,6 +85,8 @@ var vue = new Vue({
 				success:function(res){
 					if(res.isSuccess){
 						that.movies[index].isFavourite = false;
+						document.getElementById("unlikeIt"+index).style.display = "none";
+						document.getElementById("likeIt"+index).style.display = "block";
 					}
 				},
 				error:function(err){
@@ -96,6 +100,13 @@ var vue = new Vue({
 			this.prepare++;
 			this.animation[this.prepare] = "enterFromDown";
 			this.animation[this.index] = "leaveFromDown";
+			if(this.movies[this.prepare].isFavourite==true){
+				document.getElementById("unlikeIt"+index).style.display = "block";
+				document.getElementById("likeIt"+index).style.display = "none";
+			}else{	
+				document.getElementById("unlikeIt"+index).style.display = "none";
+				document.getElementById("likeIt"+index).style.display = "block";
+			}
 			setTimeout(() => {
 				this.index++;
 				setRank('#level' + this.index, parseInt(this.movies[this.index].movieScore), false, true);
@@ -106,6 +117,13 @@ var vue = new Vue({
 			this.prepare--;
 			this.animation[this.prepare] = "enterFromUp";
 			this.animation[this.index] = "leaveFromUp";
+			if(this.movies[this.prepare].isFavourite==true){
+				document.getElementById("unlikeIt"+index).style.display = "block";
+				document.getElementById("likeIt"+index).style.display = "none";
+			}else{	
+				document.getElementById("unlikeIt"+index).style.display = "none";
+				document.getElementById("likeIt"+index).style.display = "block";
+			}
 			setTimeout(() => {
 				this.index--;
 				setRank('#level' + this.index, parseInt(this.movies[this.index].movieScore), false, true)
