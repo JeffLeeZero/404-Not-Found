@@ -125,7 +125,6 @@ var vue = new Vue({
 			}, 700);
 		},
 		openComment: function() {
-			console.log("打开影评");
 			this.getComments(0);
 			this.commentStyle = "comment-enter";
 			this.commentOpen = true;
@@ -133,7 +132,6 @@ var vue = new Vue({
 			
 			setTimeout(() => {
 				layui.use('rate', function() {
-				console.log("wodepingfen");
 					var rate = layui.rate;
 
 					//渲染
@@ -146,8 +144,8 @@ var vue = new Vue({
 						text: false,
 						theme: '#FFFFFF',
 						choose: function(value) {
-							this.myRank = (value * 2).toString();
-							console.log(typeof(this.myRank));
+							that.myRank = (value * 2).toString();
+							console.log(that.myRank);
 						}
 					});
 				});
@@ -165,7 +163,7 @@ var vue = new Vue({
 							} //数据总数，从服务端得到
 						});
 					});
-			}, 1000);
+			}, 700);
 
 		},
 		sendComment: function () {
@@ -250,9 +248,6 @@ var vue = new Vue({
 					}
 				}),
 				success: function(res) {
-					console.log("获取评论");
-					console.log(this.data);
-					console.log(res);
 					that.commentCount = parseInt(res.message);
 					that.comments = res.resData;
 					document.getElementById("comment-content").scrollTop = 0;
