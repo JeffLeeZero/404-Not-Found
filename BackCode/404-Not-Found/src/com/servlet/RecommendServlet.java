@@ -4,10 +4,12 @@ import com.bean.MovieReqBean;
 import com.bean.RecommendBean;
 import com.bean.RequestBean;
 import com.bean.ResponseBean;
+import com.dao.MySlopeOneRecommender;
 import com.dao.RecommendDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,10 +48,23 @@ public class RecommendServlet extends HttpServlet {
         ResponseBean<List<RecommendBean>> recommendResponse = new ResponseBean <>();
         recommendResponse.setReqId(recommendRequest.getReqId());
 
+        //推荐算法
+        String path = this.getServletContext().getRealPath("movie_preferences.txt");
+        List<RecommendedItem> recommendation = null;
+        MySlopeOneRecommender msor = new MySlopeOneRecommender();
+        //拿到推荐的电影
+        recommendation = msor.mySlopeOneRecommender(11,12,path);
+        int nums[] = new int[5];
+        nums[0] = (int)recommendation.get(constellationNum % 12).getItemID();
+        nums[1] = (int)recommendation.get((constellationNum + 2) % 12).getItemID();
+        nums[2] = (int)recommendation.get((constellationNum + 4) % 12).getItemID();
+        nums[3] = (int)recommendation.get((constellationNum + 8) % 12).getItemID();
+        nums[4] = (int)recommendation.get((constellationNum + 11) % 12).getItemID();
+
         //判断
         try{
             RecommendDao rd = new RecommendDao();
-            List<RecommendBean> recommendList = rd.recommendQuery(recommendRequest.getReqId(),constellationNum);
+            List<RecommendBean> recommendList = rd.recommendQuery(recommendRequest.getReqId(),constellationNum,nums);
             String message = new String();
             boolean isSuccess;
             if(recommendList.size() == 6){
