@@ -125,12 +125,15 @@ var vue = new Vue({
 			}, 700);
 		},
 		openComment: function() {
-
+			console.log("打开影评");
 			this.getComments(0);
 			this.commentStyle = "comment-enter";
 			this.commentOpen = true;
 			var that = this;
-			layui.use('rate', function() {
+			
+			setTimeout(() => {
+				layui.use('rate', function() {
+				console.log("wodepingfen");
 					var rate = layui.rate;
 
 					//渲染
@@ -148,8 +151,6 @@ var vue = new Vue({
 						}
 					});
 				});
-			setTimeout(() => {
-				
 				layui.use('laypage', function() {
 						var laypage = layui.laypage;
 						//执行一个laypage实例

@@ -94,6 +94,7 @@ html,body{
     margin-bottom: 10%;
     float:left;
     font-size: 3.5vh;
+    font-family: OurFont;
 }
 .score{
     position: absolute;
